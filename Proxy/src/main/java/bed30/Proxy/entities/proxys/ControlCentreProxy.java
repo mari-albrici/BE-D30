@@ -1,7 +1,5 @@
 package bed30.Proxy.entities.proxys;
 
-public interface ControlCentreProxy {
-    double getLat();
-    double getLon();
-    int getSmokeLevel();
+public interface ControlCentreProxy extends ProbeProxy{
+    void sendAlarm();
 }

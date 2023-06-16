@@ -8,22 +8,33 @@ import lombok.NoArgsConstructor;
 import javax.naming.ldap.Control;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class Probe implements ProbeProxy {
 
-    ControlCentre controlCentre;
-    int id;
-    String alarm = "!!! ALARM !!!";
-    String url;
+    private int id;
+    private double latitude;
+    private double longitude;
+    private int smokeLevel;
 
+    public Probe(int id, double latitude, double longitude, int smokeLevel) {
+        this.id = id;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.smokeLevel = smokeLevel;
+    }
 
     @Override
-    public void alarmControl() {
-        if(controlCentre.getSmokeLevel() >= 5){
-            System.out.println(alarm);
-            url = "http://host/alarm?=idsonda=" + id + "&lat=" + controlCentre.getLat() + "&lon=" + controlCentre.getLon() + "&smokelevel=" + controlCentre.getSmokeLevel();
-            System.out.println(url);
-        }
+    public double getLatitude() {
+        return latitude;
+    }
+
+    @Override
+    public double getLongitude() {
+        return longitude;
+    }
+
+    @Override
+    public int getSmokeLevel() {
+        return smokeLevel;
     }
 }

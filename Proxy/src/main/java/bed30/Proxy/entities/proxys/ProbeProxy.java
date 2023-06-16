@@ -1,5 +1,7 @@
 package bed30.Proxy.entities.proxys;
 
 public interface ProbeProxy {
- public void alarmControl();
+ double getLatitude();
+ double getLongitude();
+ int getSmokeLevel();
 }
